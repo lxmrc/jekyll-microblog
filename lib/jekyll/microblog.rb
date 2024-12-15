@@ -39,13 +39,14 @@ module Jekyll
               end
 
               text = args.join(' ')
-              timestamp = Time.now.strftime('%Y-%m-%d-%H-%M-%S')
+              timestamp = Time.now.to_i
               path = "_#{collection_name}/#{timestamp}.md"
 
               FileUtils.mkdir_p("_#{collection_name}")
 
               File.open(path, 'w') do |f|
                 f.puts '---'
+                f.puts "layout: post"
                 f.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}"
                 f.puts '---'
                 f.puts
